@@ -436,7 +436,7 @@ export const financeData = {
     {
       name: "Gift",
       target: 150.0,
-      total: 110.0,
+      total: 40.0,
       theme: "#82C9D7",
     },
     {
