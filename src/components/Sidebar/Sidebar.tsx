@@ -40,8 +40,6 @@ const Sidebar = () => {
           </ul>
         </nav>
       </div>
-      {/*Easier to control the layout with flex. Without the wrapper, the button required additional styling.
-       */}
       <div className={styles["sidebar-footer"]}>
         <button>
           <img src={minimizeLogo} alt="Minimize Menu" />
