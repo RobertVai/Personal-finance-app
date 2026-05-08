@@ -16,31 +16,33 @@ const Sidebar = () => {
         </div>
 
         <nav>
-          <ul>
-            <li>
+          <ul className={styles["nav-list"]}>
+            <li className={styles["nav-item"]}>
               <img src={overviewLogo} alt="Overview" />
               <span>Overview</span>
             </li>
-            <li>
+            <li className={styles["nav-item"]}>
               <img src={transactionsLogo} alt="Transactions" />
               <span>Transcations</span>
             </li>
-            <li>
+            <li className={styles["nav-item"]}>
               <img src={budgetsLogo} alt="Budgets" />
               <span>Budgets</span>
             </li>
-            <li>
+            <li className={styles["nav-item"]}>
               <img src={potsLogo} alt="Pots" />
               <span>Pots</span>
             </li>
-            <li>
+            <li className={styles["nav-item"]}>
               <img src={billsLogo} alt="Reccuring Bills" />
               <span>Reccuring Bills</span>
             </li>
           </ul>
         </nav>
       </div>
-      <div className={styles.buttonContainer}>
+      {/*Easier to control the layout with flex. Without the wrapper, the button required additional styling.
+       */}
+      <div className={styles["sidebar-footer"]}>
         <button>
           <img src={minimizeLogo} alt="Minimize Menu" />
           <span>Minimize Menu</span>

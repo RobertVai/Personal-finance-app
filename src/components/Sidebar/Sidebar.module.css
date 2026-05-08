@@ -14,13 +14,13 @@
   gap: 4rem;
 }
 
-ul {
+.nav-list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
-li {
+.nav-item {
   color: #b3b3b3;
   font-size: 2rem;
   display: flex;
@@ -28,7 +28,7 @@ li {
   list-style: none;
 }
 
-.buttonContainer button {
+.sidebar-footer button {
   background: none;
   color: #b3b3b3;
   font-size: 1.5rem;
