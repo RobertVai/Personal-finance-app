@@ -13,3 +13,8 @@ body {
   font-family: "Public Sans";
   background-color: #f8f4f0;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
