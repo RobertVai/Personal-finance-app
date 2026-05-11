@@ -188,7 +188,7 @@ const Transactions = () => {
             {pages.map((page) => (
               <button
                 key={page}
-                className={currentPage === page ? styles.activePage : ""}
+                className={currentPage === page ? styles["active-page"] : ""}
                 onClick={() => setCurrentPage(page)}
               >
                 {page}
