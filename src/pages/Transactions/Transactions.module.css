@@ -110,19 +110,20 @@
   gap: 8px;
 }
 
-.pagination button {
-  padding: 10px 16px;
-  border: 1px solid #98908b;
-  border-radius: 8px;
-  background-color: #ffffff;
-  cursor: pointer;
-}
+.pagination {
+  button {
+    padding: 10px 16px;
+    border: 1px solid #98908b;
+    border-radius: 8px;
+    background-color: #ffffff;
+    cursor: pointer;
 
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }
-
 .active-page {
   background-color: #201f24 !important;
   color: #ffffff;

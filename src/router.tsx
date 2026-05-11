@@ -2,10 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Overview from "./pages/Overview/Overview";
 import Transactions from "./pages/Transactions/Transactions";
+import { PATHS } from "./constants/paths";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: PATHS.home,
     element: <Layout />,
     children: [
       {
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
         element: <Overview />,
       },
       {
-        path: "/transactions",
+        path: PATHS.transactions,
         element: <Transactions />,
       },
     ],
