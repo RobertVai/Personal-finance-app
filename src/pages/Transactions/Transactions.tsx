@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { financeData } from "../../data/financeData";
 import { useFilterTranscations } from "../../hooks/useFilterTransactions";
 import clsx from "clsx";
 import styles from "./Transactions.module.css";
