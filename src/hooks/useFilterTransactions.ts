@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import styles from "../pages/Transactions/Transactions.module.css";
 import { financeData } from "../data/financeData";
+import { formatAmount } from "../utils/formatAmount";
+import { formatDate } from "../utils/formatDate";
+import type { SortBy, TransactionSortItem } from "../types/sortingTypes";
 
 const ITEMS_PER_PAGE = 10;
 export const useFilterTranscations = () => {
   const [searchValue, setSearchValue] = useState("");
-  const [sortBy, setSortBy] = useState("latest");
+  const [sortBy, setSortBy] = useState<SortBy>("latest");
   const [category, setCategory] = useState("All Transactions");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -14,39 +17,32 @@ export const useFilterTranscations = () => {
     ...new Set(financeData.transactions.map((item) => item.category)),
   ];
 
-  let filteredTransactions = [...financeData.transactions];
+  const filteredTransactions = useMemo(() => {
+    let result = financeData.transactions;
 
-  if (searchValue) {
-    filteredTransactions = filteredTransactions.filter((item) =>
-      item.name.toLowerCase().includes(searchValue.toLowerCase()),
-    );
-  }
+    if (searchValue) {
+      result = result.filter((item) =>
+        item.name.toLowerCase().includes(searchValue.toLowerCase()),
+      );
+    }
 
-  if (category !== "All Transactions") {
-    filteredTransactions = filteredTransactions.filter(
-      (item) => item.category === category,
-    );
-  }
+    if (category !== "All Transactions") {
+      result = result.filter((item) => item.category === category);
+    }
 
-  if (sortBy === "latest") {
-    filteredTransactions.sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    );
-  }
+    const sortFns = {
+      latest: (a: TransactionSortItem, b: TransactionSortItem) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime(),
+      oldest: (a: TransactionSortItem, b: TransactionSortItem) =>
+        new Date(a.date).getTime() - new Date(b.date).getTime(),
+      highest: (a: TransactionSortItem, b: TransactionSortItem) =>
+        b.amount - a.amount,
+      lowest: (a: TransactionSortItem, b: TransactionSortItem) =>
+        a.amount - b.amount,
+    };
 
-  if (sortBy === "oldest") {
-    filteredTransactions.sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
-    );
-  }
-
-  if (sortBy === "highest") {
-    filteredTransactions.sort((a, b) => b.amount - a.amount);
-  }
-
-  if (sortBy === "lowest") {
-    filteredTransactions.sort((a, b) => a.amount - b.amount);
-  }
+    return result.toSorted(sortFns[sortBy] ?? sortFns.latest);
+  }, [searchValue, category, sortBy]);
 
   const totalPages = Math.ceil(filteredTransactions.length / ITEMS_PER_PAGE);
 
@@ -55,25 +51,12 @@ export const useFilterTranscations = () => {
     currentPage * ITEMS_PER_PAGE,
   );
 
-  const pages = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   const transformedTransactions = visibleTransactions.map((transaction) => {
-    const formattedDate = new Date(transaction.date).toLocaleDateString(
-      "en-GB",
-      {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      },
-    );
+    const formattedDate = formatDate(transaction.date);
 
-    const formattedAmount = `${transaction.amount > 0 ? "+" : "-"}$${Math.abs(
-      transaction.amount,
-    ).toFixed(2)}`;
+    const formattedAmount = formatAmount(transaction.amount);
 
     const amountClass =
       transaction.amount > 0 ? styles.positive : styles.negative;
@@ -91,7 +74,7 @@ export const useFilterTranscations = () => {
     setCurrentPage(1);
   };
 
-  const handleSortChange = (value: string) => {
+  const handleSortChange = (value: SortBy) => {
     setSortBy(value);
     setCurrentPage(1);
   };

@@ -3,6 +3,7 @@ import { financeData } from "../../data/financeData";
 import { useFilterTranscations } from "../../hooks/useFilterTransactions";
 import clsx from "clsx";
 import styles from "./Transactions.module.css";
+import type { SortBy } from "../../types/sortingTypes";
 
 const Transactions = () => {
   const {
@@ -26,6 +27,9 @@ const Transactions = () => {
 
       <div className={styles.card}>
         <div className={styles.controls}>
+          <label htmlFor="search" className={styles["visually-hidden"]}>
+            Search
+          </label>
           <input
             className={styles.search}
             type="text"
@@ -39,7 +43,9 @@ const Transactions = () => {
               Sort by
               <select
                 value={sortBy}
-                onChange={(event) => handleSortChange(event.target.value)}
+                onChange={(event) =>
+                  handleSortChange(event.target.value as SortBy)
+                }
               >
                 <option value="latest">Latest</option>
                 <option value="oldest">Oldest</option>
@@ -106,7 +112,9 @@ const Transactions = () => {
             {pages.map((page) => (
               <button
                 key={page}
-                className={clsx(currentPage === page && styles["active-page"])}
+                className={clsx({
+                  [styles["active-page"]]: currentPage === page,
+                })}
                 onClick={() => setCurrentPage(page)}
               >
                 {page}
