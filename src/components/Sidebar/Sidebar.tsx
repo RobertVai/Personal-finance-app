@@ -1,4 +1,6 @@
 import styles from "./Sidebar.module.css";
+import { Link } from "react-router-dom";
+import { PATHS } from "../../constants/paths";
 import financeLogo from "../../../public/assets/images/logo-large.svg";
 import overviewLogo from "../../../public/assets/images/icon-nav-overview.svg";
 import transactionsLogo from "../../../public/assets/images/icon-nav-transactions.svg";
@@ -19,11 +21,15 @@ const Sidebar = () => {
           <ul className={styles["nav-list"]}>
             <li className={styles["nav-item"]}>
               <img src={overviewLogo} alt="Overview" />
-              <span>Overview</span>
+              <span>
+                <Link to={PATHS.home}>Overview</Link>
+              </span>
             </li>
             <li className={styles["nav-item"]}>
               <img src={transactionsLogo} alt="Transactions" />
-              <span>Transcations</span>
+              <span>
+                <Link to={PATHS.transactions}>Transactions</Link>
+              </span>
             </li>
             <li className={styles["nav-item"]}>
               <img src={budgetsLogo} alt="Budgets" />
