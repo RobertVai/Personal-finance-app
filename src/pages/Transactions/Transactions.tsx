@@ -25,10 +25,14 @@ const Transactions = () => {
 
       <div className={styles.card}>
         <div className={styles.controls}>
-          <label htmlFor="search" className={styles["visually-hidden"]}>
+          <label
+            htmlFor="search-transactions"
+            className={styles["visually-hidden"]}
+          >
             Search
           </label>
           <input
+            name="search-transactions"
             className={styles.search}
             type="text"
             placeholder="Search transaction"
