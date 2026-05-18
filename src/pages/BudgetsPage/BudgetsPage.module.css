@@ -1,0 +1,6 @@
+.budgets {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: 24px;
+  align-items: start;
+}

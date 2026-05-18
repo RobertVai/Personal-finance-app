@@ -33,7 +33,9 @@ const Sidebar = () => {
             </li>
             <li className={styles["nav-item"]}>
               <img src={budgetsLogo} alt="Budgets" />
-              <span>Budgets</span>
+              <span>
+                <Link to={PATHS.budgets}>Budgets</Link>
+              </span>
             </li>
             <li className={styles["nav-item"]}>
               <img src={potsLogo} alt="Pots" />

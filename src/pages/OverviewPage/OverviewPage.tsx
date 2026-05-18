@@ -3,7 +3,7 @@ import BudgetsSummary from "../../components/BudgetsSummary/BudgetsSummary";
 import PotsSummary from "../../components/PotsSummary/PotsSummary";
 import TransactionsSummary from "../../components/TransactionsSummary/TransactionsSummary";
 
-const Overview = () => {
+const OverviewPage = () => {
   return (
     <div>
       <BalanceSummary />
@@ -14,4 +14,4 @@ const Overview = () => {
   );
 };
 
-export default Overview;
+export default OverviewPage;

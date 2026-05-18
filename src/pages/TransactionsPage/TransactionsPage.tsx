@@ -1,9 +1,9 @@
 import { useFilterTranscations } from "../../hooks/useFilterTransactions";
 import clsx from "clsx";
-import styles from "./Transactions.module.css";
+import styles from "./TransactionsPage.module.css"
 import type { SortBy } from "../../types/sortingTypes";
 
-const Transactions = () => {
+const TransactionsPage = () => {
   const {
     searchValue,
     sortBy,
@@ -136,4 +136,4 @@ const Transactions = () => {
   );
 };
 
-export default Transactions;
+export default TransactionsPage;

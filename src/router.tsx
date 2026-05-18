@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import Overview from "./pages/Overview/Overview";
-import Transactions from "./pages/Transactions/Transactions";
+import OverviewPage from "./pages/OverviewPage/OverviewPage";
+import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import { PATHS } from "./constants/paths";
+import BudgetsPage from "./pages/BudgetsPage/BudgetsPage";
 
 export const router = createBrowserRouter([
   {
@@ -11,11 +12,15 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Overview />,
+        element: <OverviewPage />,
       },
       {
         path: PATHS.transactions,
-        element: <Transactions />,
+        element: <TransactionsPage />,
+      },
+      {
+        path: PATHS.budgets,
+        element: <BudgetsPage />,
       },
     ],
   },
