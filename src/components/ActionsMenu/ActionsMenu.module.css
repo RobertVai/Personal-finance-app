@@ -8,8 +8,8 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
-.editButton,
-.deleteButton {
+.edit-button,
+.delete-button {
   border: none;
   background: transparent;
   padding: 0;
@@ -19,13 +19,13 @@
   cursor: pointer;
 }
 
-.editButton {
+.edit-button {
   color: #201f24;
   padding-bottom: 12px;
   border-bottom: 1px solid #f2f2f2;
 }
 
-.deleteButton {
+.delete-button {
   color: #c94736;
   padding-top: 12px;
 }

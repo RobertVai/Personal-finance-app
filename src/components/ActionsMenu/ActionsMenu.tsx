@@ -15,11 +15,11 @@ const ActionsMenu = ({
 }: ActionsMenuProps) => {
   return (
     <div className={styles.menu}>
-      <button type="button" onClick={onEdit} className={styles.editButton}>
+      <button type="button" onClick={onEdit} className={styles["edit-button"]}>
         {editLabel}
       </button>
 
-      <button type="button" onClick={onDelete} className={styles.deleteButton}>
+      <button type="button" onClick={onDelete} className={styles["delete-button"]}>
         {deleteLabel}
       </button>
     </div>

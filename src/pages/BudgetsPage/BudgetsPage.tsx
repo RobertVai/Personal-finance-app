@@ -8,9 +8,10 @@ import BudgetForm from "../../components/BudgetForm/BudgetForm";
 import ActionsMenu from "../../components/ActionsMenu/ActionsMenu";
 
 const BudgetsPage = () => {
+  const [budgets, setBudgets] = useState(financeData.budgets);
   const [isBudgetModalOpen, setIsBudgetModalOpen] = useState(false);
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
-  const budgetsWithTransactions = financeData.budgets.map((budget) => {
+  const budgetsWithTransactions = budgets.map((budget) => {
     const recentSpendings = financeData.transactions
       .filter((transaction) => transaction.category === budget.category)
       .slice(0, 3);
@@ -31,12 +32,16 @@ const BudgetsPage = () => {
     };
   });
 
+  const deleteBudget = (id: number) => {
+    setBudgets((prev) => prev.filter((budget) => budget.id !== id));
+  };
+
   return (
     <div className={styles["budgets"]}>
       <div className={styles["left-column"]}>
         <h2>Spending Summary</h2>
         {budgetsWithTransactions.map((budget) => (
-          <div key={budget.category}>
+          <div key={budget.id}>
             <p>${budget.category}</p>
             <p>
               ${budget.augustTotal} of ${budget.maximum}
@@ -75,7 +80,7 @@ const BudgetsPage = () => {
             </div>
 
             {budget.transactions.map((transaction) => (
-              <div key={transaction.category}>
+              <div key={transaction.id}>
                 <img src={transaction.avatar} alt={transaction.name} />
                 <p>{transaction.name}</p>
                 <p>{formatAmount(transaction.amount)}</p>

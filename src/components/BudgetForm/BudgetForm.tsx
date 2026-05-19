@@ -8,7 +8,7 @@ const BudgetForm = () => {
         you monitor spending.
       </p>
 
-      <div className={styles.formGroup}>
+      <div className={styles["form-group"]}>
         <label htmlFor="budget-category">Budget Category</label>
 
         <select id="budget-category" className={styles.input}>
@@ -19,22 +19,22 @@ const BudgetForm = () => {
         </select>
       </div>
 
-      <div className={styles.formGroup}>
+      <div className={styles["form-group"]}>
         <label htmlFor="maximum-spend">Maximum Spend</label>
 
-        <div className={styles.amountInputWrapper}>
+        <div className={styles["amount-input-wrapper"]}>
           <span>$</span>
 
           <input
             id="maximum-spend"
             type="number"
             placeholder="e.g. 2000"
-            className={styles.amountInput}
+            className={styles["amount-input"]}
           />
         </div>
       </div>
 
-      <div className={styles.formGroup}>
+      <div className={styles["form-group"]}>
         <label htmlFor="theme">Theme</label>
 
         <select id="theme" className={styles.input}>
@@ -45,7 +45,7 @@ const BudgetForm = () => {
         </select>
       </div>
 
-      <button type="submit" className={styles.submitButton}>
+      <button type="submit" className={styles["submit-button"]}>
         Add Budget
       </button>
     </form>
