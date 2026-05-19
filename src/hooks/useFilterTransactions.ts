@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import styles from "../pages/Transactions/Transactions.module.css";
+import styles from "../pages/TransactionsPage/TransactionsPage.module.css"
 import { financeData } from "../data/financeData";
 import { formatAmount } from "../utils/formatAmount";
 import { formatDate } from "../utils/formatDate";
